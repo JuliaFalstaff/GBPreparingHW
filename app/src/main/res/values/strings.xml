@@ -5,6 +5,7 @@
     <string name="dialog_rationale_message">Для получения точной геолокации необходимо предоставить разрешение на использование GPS</string>
     <string name="positive_button">Разрешить</string>
     <string name="negative_button">Отклонить</string>
+    <string name="dialog_neutral_button">Оk</string>
     <string name="dialog_title_no_gps">Нет доступа к GPS</string>
     <string name="dialog_message_no_gps">Вы не предоставили разрешение на доступ к GPS</string>
     <string name="dialog_title_gps_turn_off">GPS выключен</string>

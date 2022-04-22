@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.gbpreparinghw.databinding.FragmentMapsBinding
@@ -113,14 +115,41 @@ class MapsFragment : Fragment() {
 
     private fun activateMyLocation(googleMap: GoogleMap) {
         requireContext().let {
-            val isPermissionGranted = ContextCompat.checkSelfPermission(it,
-                    Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-            googleMap.isMyLocationEnabled = isPermissionGranted
-            googleMap.uiSettings.isMyLocationButtonEnabled = isPermissionGranted
-
-            //TODO checkPermissions
+            when (PackageManager.PERMISSION_GRANTED) {
+                ContextCompat.checkSelfPermission(it,
+                        Manifest.permission.ACCESS_FINE_LOCATION),
+                -> {
+                    googleMap.isMyLocationEnabled = true
+                    googleMap.uiSettings.isMyLocationButtonEnabled = true
+                }
+                else -> {
+                    requestPermission()
+                }
+            }
         }
     }
+
+    private fun requestPermission() {
+        requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+    }
+
+    private val requestPermissionLauncher =
+            registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+                if (isGranted) {
+                    activateMyLocation(map)
+                } else {
+                    requireActivity().let {
+                        AlertDialog.Builder(it)
+                                .setTitle(getString(R.string.dialog_rationale_title))
+                                .setMessage(getString(R.string.dialog_rationale_message))
+                                .setNegativeButton(getString(R.string.dialog_neutral_button)) { dialog, _ ->
+                                    dialog.dismiss()
+                                }
+                                .create()
+                                .show()
+                    }
+                }
+            }
 
     override fun onDestroy() {
         _binding = null
