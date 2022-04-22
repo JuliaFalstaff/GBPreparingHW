@@ -1,11 +1,14 @@
 package com.example.gbpreparinghw
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.gbpreparinghw.databinding.FragmentMapsBinding
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -34,6 +37,7 @@ class MapsFragment : Fragment() {
             getAddressAsync(it)
             addMarkerToArray(it)
         }
+        activateMyLocation(googleMap)
     }
 
     private fun addMarkerToArray(location: LatLng) {
@@ -43,10 +47,10 @@ class MapsFragment : Fragment() {
 
     private fun setMarker(location: LatLng, searchText: String, icMapPin: Int): Marker? {
         return map.addMarker(
-            MarkerOptions()
-                .position(location)
-                .title(searchText)
-                .icon(BitmapDescriptorFactory.fromResource(icMapPin))
+                MarkerOptions()
+                        .position(location)
+                        .title(searchText)
+                        .icon(BitmapDescriptorFactory.fromResource(icMapPin))
         )
     }
 
@@ -67,9 +71,9 @@ class MapsFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentMapsBinding.inflate(inflater, container, false)
         return binding.root
@@ -89,10 +93,10 @@ class MapsFragment : Fragment() {
             Thread {
                 try {
                     val address = geoCoder.getFromLocationName(searchText, MAX_RESULT_ADDRESS)
-                    if(address.size > 0) {
+                    if (address.size > 0) {
                         goToAddress(address, it, searchText)
                     }
-                }catch (e: IOException) {
+                } catch (e: IOException) {
                     e.printStackTrace()
                 }
             }.start()
@@ -104,6 +108,17 @@ class MapsFragment : Fragment() {
         view?.post {
             setMarker(location, searchText, R.drawable.ic_map_pin)
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(location, CAMERA_ZOOM))
+        }
+    }
+
+    private fun activateMyLocation(googleMap: GoogleMap) {
+        requireContext().let {
+            val isPermissionGranted = ContextCompat.checkSelfPermission(it,
+                    Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+            googleMap.isMyLocationEnabled = isPermissionGranted
+            googleMap.uiSettings.isMyLocationButtonEnabled = isPermissionGranted
+
+            //TODO checkPermissions
         }
     }
 

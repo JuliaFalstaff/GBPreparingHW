@@ -28,8 +28,9 @@
             android:id="@+id/buttonSearchMap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:text="@string/button_search_map" />
+
     </LinearLayout>
 
     <include layout="@layout/fragment_google_map" />
