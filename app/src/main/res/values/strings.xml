@@ -15,4 +15,5 @@
     <string name="text_google_map_search">Search address</string>
     <string name="address_hint">Type your address here</string>
     <string name="button_search_map">Search</string>
+    <string name="google_map_initial_place">Marker in London</string>
 </resources>
