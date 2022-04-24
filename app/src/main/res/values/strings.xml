@@ -18,4 +18,6 @@
     <string name="button_search_map">Search</string>
     <string name="google_map_initial_place">Marker in London</string>
     <string name="gps_location">GPS</string>
+    <string name="titleMarkerList">Title</string>
+    <string name="descriptionMarkerList">Description</string>
 </resources>

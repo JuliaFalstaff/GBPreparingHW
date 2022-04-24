@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/card_view_margin_top"
+    android:layout_marginBottom="@dimen/card_view_margin_bottom"
+    android:elevation="@dimen/card_view_elevation"
+    app:cardCornerRadius="@dimen/card_view_margin_corner_radius">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/markerTitleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="@string/titleMarkerList"
+             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iconMarkerImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/markerTitleEditText"
+            app:srcCompat="@drawable/ic_map_pin" />
+
+        <TextView
+            android:id="@+id/annotationMarkerEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/descriptionMarkerList"
+            app:layout_constraintStart_toEndOf="@+id/iconMarkerImageView"
+            app:layout_constraintTop_toBottomOf="@+id/markerTitleEditText" />
+
+        <TextView
+            android:id="@+id/earthFullDescriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconMarkerImageView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
