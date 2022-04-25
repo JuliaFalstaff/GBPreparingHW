@@ -20,4 +20,9 @@
     <string name="gps_location">GPS</string>
     <string name="titleMarkerList">Title</string>
     <string name="descriptionMarkerList">Description</string>
+    <string name="markers_list_title">Markers list</string>
+    <string name="input_name_dialog_title">name_dialog</string>
+    <string name="edit_snippet_dialog_title">title_dialog</string>
+    <string name="google_map">Google Map</string>
+    <string name="save">Save</string>
 </resources>
