@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">GBPreparingHW</string>
+    <string name="find_location_content_describe">Find location</string>
+    <string name="dialog_rationale_title">Доступ к геолокации</string>
+    <string name="dialog_rationale_message">Для получения точной геолокации необходимо предоставить разрешение на использование GPS</string>
+    <string name="positive_button">Разрешить</string>
+    <string name="negative_button">Отклонить</string>
+    <string name="dialog_neutral_button">Оk</string>
+    <string name="dialog_title_no_gps">Нет доступа к GPS</string>
+    <string name="dialog_message_no_gps">Вы не предоставили разрешение на доступ к GPS</string>
+    <string name="dialog_title_gps_turn_off">GPS выключен</string>
+    <string name="message_dialog_gps_turn_off">На вашем устройстве необходимо включить GPS. Нет данных последнего местонахождения</string>
+    <string name="message_dialog_last_known_location">Ваше последнее местонахождение</string>
+    <string name="dialog_address_title">Адрес</string>
+    <string name="dialog_message_address">Местоположение</string>
+    <string name="text_google_map_search">Search address</string>
+    <string name="address_hint">Type your address here</string>
+    <string name="button_search_map">Search</string>
+    <string name="google_map_initial_place">Marker in London</string>
+    <string name="gps_location">GPS</string>
+    <string name="titleMarkerList">Title</string>
+    <string name="descriptionMarkerList">Description</string>
+    <string name="markers_list_title">Markers list</string>
+    <string name="input_name_dialog_title">name_dialog</string>
+    <string name="edit_snippet_dialog_title">title_dialog</string>
+    <string name="google_map">Google Map</string>
+    <string name="save">Save</string>
 </resources>
